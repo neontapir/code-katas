@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorDojo", "DecoratorDojo\DecoratorDojo.csproj", "{FEDB2B1E-79DC-4D2A-B2CF-6B893ED8BCC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2FCCFF32-4D36-4983-99F7-554B99DA5B71}"
+	ProjectSection(SolutionItems) = preProject
+		DecoratorDojo.vsmdi = DecoratorDojo.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DecoratorDojo.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEDB2B1E-79DC-4D2A-B2CF-6B893ED8BCC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDB2B1E-79DC-4D2A-B2CF-6B893ED8BCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDB2B1E-79DC-4D2A-B2CF-6B893ED8BCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDB2B1E-79DC-4D2A-B2CF-6B893ED8BCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
