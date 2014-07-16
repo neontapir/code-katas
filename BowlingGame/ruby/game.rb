@@ -1,5 +1,11 @@
 class Game
-  def score
-    0
+  attr_reader :score
+  
+  def initialize
+    @score = 0
+  end
+  
+  def roll(pins)
+    @score += pins
   end
 end
