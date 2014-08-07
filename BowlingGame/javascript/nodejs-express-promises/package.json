@@ -1,0 +1,12 @@
+{
+  "name": "bowling-game",
+  "description": "Bowling game kata",
+  "author": "Chuck Durfee <chuck@neontapir.com>",
+  "dependencies": {
+    "express": "3.16.2",
+    "should": "4.0.4",
+    "supertest-as-promised": "1.0.0",
+    "bluebird": "1.2.4"
+  },
+  "engine": "node >=0.10"
+}

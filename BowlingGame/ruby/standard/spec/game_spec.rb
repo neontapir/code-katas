@@ -40,6 +40,14 @@ class Game_spec
       expect(@game.score).to eq(28)
     end
     
+    it "can score a perfect game" do
+      12.times do    
+        roll_strike
+      end
+          
+      expect(@game.score).to eq(300)
+    end
+    
     def roll_spare
       @game.roll(4)
       @game.roll(6) #spare
