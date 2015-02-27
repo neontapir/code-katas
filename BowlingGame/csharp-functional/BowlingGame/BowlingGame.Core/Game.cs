@@ -1,58 +1,64 @@
 ﻿using System;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 
-namespace BowlingGame.Core
+namespace Sandbox
 {
-    public class Game
-    {
-	    public List<int> rolls = new List<int>();
-
-	    public void Roll(int pins)
-	    {
-		    rolls.Add(pins);
-	    }
-
-	    public int Score()
-	    {
-		    return rolls.ToFrames().Take(10).Sum(frame => frame.Sum());
-	    }
-    }
-
-	public static class BowlingRules
+	public class Game
 	{
-		public static IEnumerable<IEnumerable<int>> ToFrames(this IEnumerable<int> rolls)
-		{
-			yield return rolls.Take(rolls.BallsToScore());
-			foreach (var frame in rolls.Skip(rolls.FrameAdvance()).ToFrames())
-				yield return frame;
+		List<int> results = new List<int>();
+
+		public void Roll(int pins) {
+			results.Add(pins);
 		}
 
-		private static int FrameAdvance(this IEnumerable<int> rolls)
-		{
-			return rolls.IsStrike() ? 1 : 2;
+		public int Score() {
+			return results.EndGame().ToFrames().Take(10).Sum(f => f.Sum());
+		}
+	}
+
+	public static class BlowingFrameExtensions {
+		public static IEnumerable<IEnumerable<int>> ToFrames(this IEnumerable<int> list) {
+			yield return list.TakeFrame();
+
+			foreach (var pair in list.SkipFrame().ToFrames()) {
+				yield return pair;
+			}
 		}
 
-		private static int BallsToScore(this IEnumerable<int> rolls)
-		{
-			return IsBonus(rolls) ? 3 : 2;
+		public static IEnumerable<int> TakeFrame(this IEnumerable<int> list) {
+			return list.Take(list.NumberToTake());
 		}
 
-		private static bool IsBonus(IEnumerable<int> rolls)
-		{
-			return rolls.IsStrike() || rolls.IsSpare();
+		public static int NumberToTake(this IEnumerable<int> list) {
+			if (IsSpare(list) || IsStrike(list))
+				return 3;
+			return 2;
+		}
+			
+		public static IEnumerable<int> SkipFrame(this IEnumerable<int> list) {
+			return list.Skip(list.NumberToSkip());
 		}
 
-		private static bool IsStrike(this IEnumerable<int> rolls)
-		{
-			return rolls.Take(1).Sum().Equals(10);
+		public static int NumberToSkip(this IEnumerable<int> list) {
+			if (IsStrike(list))
+				return 1;
+			return 2;
 		}
 
-		private static bool IsSpare(this IEnumerable<int> rolls)
-		{
-			return rolls.Take(2).Sum().Equals(10);
+		public static bool IsSpare(IEnumerable<int> list) {
+			return (list.Take(2).Sum() == 10);
+		}
+
+		public static bool IsStrike(IEnumerable<int> list) {
+			return (list.First() == 10);
+		}
+
+		public static IEnumerable<int> EndGame(this IEnumerable<int> list) {
+			return list.Concat(new int[20]).Take(21);
 		}
 	}
 }
+
