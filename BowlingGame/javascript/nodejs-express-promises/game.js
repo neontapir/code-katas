@@ -1,28 +1,52 @@
-var express = require('express');
-var app = exports.app = express();
+var express = require('express'),
+  longjohn = require('longjohn'),
+  app = exports.app = express();
 
-app.get('/start', function(req, res) {
-    rolls = new Array();
-    attempt = 0;
+var attempts = new Object;
+var ball = 0;
+    
+var getAttempts = function(gameId) { 
+	return attempts['game' + gameId];
+}
+	
+app.get('/api', function (req, res) {
+  res.send('Bowling Game API is running');
 });
 
-app.post('/bowl/:pins', function(req, res) {
-    rolls[attempt] = parseInt(req.params.pins);
-    attempt++;
+app.get('/game/:gameId/start', function(req, res) {
+  var gameId = req.params.gameId;
+  attempts['game' + req.params.gameId] = [];
+  for(var i = 0; i < 21; i++) {
+	  getAttempts(gameId)[i] = 0;
+  }
+  ball = 0;
 });
 
-app.get('/score', function(req, res) {
-    var total = 0;
-    var ball = 0;
-    for (var frame = 0; frame < 10; frame++) {
-        if (rolls[ball] + rolls[ball + 1] == 10) { 
-            total += rolls[ball + 2]; // this line causes the double callback
-        }
-        total += rolls[ball] + rolls[ball + 1];
-        ball += 2;
-    }
-
-    res.send(200, {score: total});
+app.post('/game/:gameId/bowl/:pins', function(req,res) {
+  var gameId = req.params.gameId;
+  getAttempts(gameId)[ball] = parseInt(req.params.pins);
+  ball++;
 });
 
+app.get('/game/:gameId/score', function(req,res) {
+  var gameId = req.params.gameId;
+  var sum = 0;
+  var i = 0;
+  var thisGame = getAttempts(gameId);
+  for(var frame = 0; frame < 10; frame++) {
+	  sum += thisGame[i] + thisGame[i+1];
+	  if (thisGame[i] == 10) {
+		  sum += thisGame[i+2];
+		  i++;
+	  }
+	  else {
+		  if (thisGame[i] + thisGame[i+1] == 10) {
+			  sum += thisGame[i+2];
+		  }
+		  i+=2;
+	  }
+  }
+  res.send(sum + '');
+}); 
+ 
 app.listen(process.env.PORT || 3000);
