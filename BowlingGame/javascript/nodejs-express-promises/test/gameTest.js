@@ -24,10 +24,6 @@ var rollMany = function(gameId, times, pins) {
 var checkScore = function(gameId, actualScore, done) {
 	request(game).get('/game/' + gameId + '/score')
 		.expect(200, actualScore, done);
-	// .expect(200, actualScore).then(function(res, err) {
-		// if (err) return done(err);
-		// done();
-	// });
 }  
   
 var startGame = function(gameId) { 
@@ -74,6 +70,15 @@ describe('when bowling', function() {
 			.then(roll(gameId, 3))
 			.then(rollMany(gameId, 17, 0))
 			.then(checkScore(gameId, '24', done));
+		});
+	});
+	
+	describe('a perfect game', function() {
+		var gameId = 5;
+		it('should return 300', function(done) {  
+			startGame(gameId)
+			.then(rollMany(gameId, 12, 10))
+			.then(checkScore(gameId, '300', done));
 		});
 	});
 });
