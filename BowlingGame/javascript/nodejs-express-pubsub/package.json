@@ -1,0 +1,32 @@
+{
+  "name": "bowlingGame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "eventemitter3": "^0.1.6",
+    "express": "^4.12.2",
+    "should": "^5.1.0",
+    "supertest": "^0.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neontapir/code-katas.git"
+  },
+  "keywords": [
+    "kata"
+  ],
+  "author": "Chuck Durfee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neontapir/code-katas/issues"
+  },
+  "homepage": "https://github.com/neontapir/code-katas"
+}
