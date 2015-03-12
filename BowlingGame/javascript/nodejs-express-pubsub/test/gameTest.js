@@ -3,6 +3,10 @@ var request = require('supertest'),
   game = require('../game.js').app;
   
 describe('a game of bowling', function() {
+	beforeEach(function() {
+		request(game).get('/start').end();
+	})
+	
 	describe('a gutter game', function(){
 		it('should have a score of 0', function(done){
 			for(var i = 0; i<20; i++) {
