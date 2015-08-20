@@ -21,11 +21,15 @@ import static org.junit.Assert.assertTrue;
 public class GameTest {
     static ActorSystem system;
     static LoggingAdapter log;
+    static TestActorRef<Game> game;
 
     @BeforeClass
     public static void setup() {
         system = ActorSystem.create();
         log = Logging.getLogger(system, GameTest.class);
+
+        Props props = Props.create(Game.class);
+        game = TestActorRef.create(system, props, "game");
     }
 
     @AfterClass
@@ -36,15 +40,17 @@ public class GameTest {
 
     @Test
     public void gutterGameTest() throws Exception {
-        log.info("gutterGameTest started");
         sendScoreToGame(new ScoreGame(new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 0);
+    }
+
+    @Test
+    public void singlePinTest() throws Exception {
+        sendScoreToGame(new ScoreGame(new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}), 20);
     }
 
     private void sendScoreToGame(ScoreGame attempts, int expectedScore) throws Exception {
         new JavaTestKit(system) {{
             GameScored expected = new GameScored(expectedScore);
-            Props props = Props.create(Game.class);
-            TestActorRef<Game> game = TestActorRef.create(system, props, "game");
 
             Future<Object> future = Patterns.ask(game, attempts, 3000);
             assertTrue(future.isCompleted());

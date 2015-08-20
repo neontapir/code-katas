@@ -22,4 +22,9 @@ public class GameScored {
     public int hashCode() {
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "GameScored("+result+")";
+    }
 }
