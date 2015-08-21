@@ -13,10 +13,8 @@ import org.junit.Test;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
-import sun.jvm.hotspot.utilities.Assert;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GameTest {
     static ActorSystem system;
@@ -48,6 +46,11 @@ public class GameTest {
         sendScoreToGame(new ScoreGame(new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}), 20);
     }
 
+    @Test
+    public void spareTest() throws Exception {
+        sendScoreToGame(new ScoreGame(new int[] {4,6,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 26);
+    }
+
     private void sendScoreToGame(ScoreGame attempts, int expectedScore) throws Exception {
         new JavaTestKit(system) {{
             GameScored expected = new GameScored(expectedScore);
@@ -57,7 +60,6 @@ public class GameTest {
 
             Object actual = Await.result(future, Duration.Zero());
 
-            Assert.that(actual instanceof GameScored, "Wrong return type");
             assertEquals(expected, actual);
         }};
     }

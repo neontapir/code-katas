@@ -26,8 +26,9 @@ public class Game extends AbstractLoggingActor {
 
     private int calculateScore(int[] attempts) {
         int sum = 0;
-        for (int attempt : attempts) {
-            sum += attempt;
+        for (int n = 1; n <= 10; n++) {
+          Frame frame = new Frame(attempts, n);
+          sum += frame.getScore();
         }
         return sum;
     }
