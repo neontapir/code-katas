@@ -13,6 +13,9 @@ import org.junit.Test;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
+import scala.concurrent.duration.FiniteDuration;
+
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
@@ -62,25 +65,19 @@ public class FrameTest {
         int[] input = new int[] {0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1};
         Props props = Props.create(Frame.class, input, 1);
         frame = TestActorRef.create(system, props);
-        getScoreFromFrameActor(new ScoreFrame(), 1);
+        getScoreFromFrameActor(frame, new ScoreFrame(), new ScoredFrame(1,1));
     }
 
     @Test
     public void canScoreSpare() throws Exception {
         int[] input = new int[] {0,10,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1};
-        Props props = Props.create(Frame.class, input, 1);
+        int frameNumber = 1;
+        Props props = Props.create(Frame.class, input, frameNumber);
         frame = TestActorRef.create(system, props);
-        getScoreFromFrameActor(new ScoreFrame(), 12);
+        getScoreFromFrameActor(frame, new ScoreFrame(), new ScoredFrame(1, 12));
     }
 
-//
-//    @Test
-//    public void canScoreSpare() {
-//        int[] input = new int[] {0,10,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1};
-//        Frame frame = new Frame(input, 1);
-//        assertEquals(12, frame.getScore());
-//    }
-
+    // sync testing model
     private void getFrameFromFrameActor(GetFrame frameSignal, int[] expected) throws Exception {
         new JavaTestKit(system) {{
             Future<Object> future = Patterns.ask(frame, frameSignal, 1000);
@@ -92,14 +89,11 @@ public class FrameTest {
         }};
     }
 
-    private void getScoreFromFrameActor(ScoreFrame frameSignal, int expected) throws Exception {
+    // async testing model
+    private void getScoreFromFrameActor(TestActorRef<Frame> frame, ScoreFrame frameSignal, ScoredFrame expected) throws Exception {
         new JavaTestKit(system) {{
-            Future<Object> future = Patterns.ask(frame, frameSignal, 1000);
-            assertTrue(future.isCompleted());
-
-            ScoredFrame actual = (ScoredFrame)Await.result(future, Duration.Zero());
-
-            assertEquals(expected, actual.score);
+            frame.tell(frameSignal, getRef());
+            expectMsgEquals(FiniteDuration.apply(500, TimeUnit.MILLISECONDS), expected);
         }};
     }
 }
