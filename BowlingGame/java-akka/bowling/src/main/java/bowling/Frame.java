@@ -68,7 +68,7 @@ public class Frame extends AbstractLoggingActor {
     public int getScore() {
         int[] frame = getFrame();
         int sum = 0;
-        if (frame[0] + frame[1] == 10) {
+        if (frame[0] == 10 || frame[0] + frame[1] == 10) {
             sum += frame[2];
         }
         sum += frame[0] + frame[1];

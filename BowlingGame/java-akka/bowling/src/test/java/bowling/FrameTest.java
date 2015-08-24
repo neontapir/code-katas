@@ -65,7 +65,7 @@ public class FrameTest {
         int[] input = new int[] {0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1};
         Props props = Props.create(Frame.class, input, 1);
         frame = TestActorRef.create(system, props);
-        getScoreFromFrameActor(frame, new ScoreFrame(), new ScoredFrame(1,1));
+        getScoreFromFrameActor(frame, new ScoreFrame(), new ScoredFrame(1, 1));
     }
 
     @Test
@@ -75,6 +75,15 @@ public class FrameTest {
         Props props = Props.create(Frame.class, input, frameNumber);
         frame = TestActorRef.create(system, props);
         getScoreFromFrameActor(frame, new ScoreFrame(), new ScoredFrame(1, 12));
+    }
+
+    @Test
+    public void canScoreStrike() throws Exception {
+        int[] input = new int[] {10,1,5,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1};
+        int frameNumber = 1;
+        Props props = Props.create(Frame.class, input, frameNumber);
+        frame = TestActorRef.create(system, props);
+        getScoreFromFrameActor(frame, new ScoreFrame(), new ScoredFrame(1, 16));
     }
 
     // sync testing model

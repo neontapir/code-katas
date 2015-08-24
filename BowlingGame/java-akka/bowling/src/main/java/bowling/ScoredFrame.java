@@ -1,12 +1,20 @@
 package bowling;
 
 public class ScoredFrame {
-    public int score;
     public int frameNumber;
+    public int score;
 
     public ScoredFrame(int frameNumber, int score) {
         this.frameNumber = frameNumber;
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "ScoredFrame{" +
+                "frameNumber=" + frameNumber +
+                ", score=" + score +
+                '}';
     }
 
     @Override
