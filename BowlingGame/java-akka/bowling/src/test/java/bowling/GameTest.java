@@ -4,63 +4,57 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-import akka.pattern.Patterns;
 import akka.testkit.JavaTestKit;
 import akka.testkit.TestActorRef;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import scala.concurrent.Await;
-import scala.concurrent.Future;
-import scala.concurrent.duration.Duration;
+import scala.concurrent.duration.FiniteDuration;
 
-import static org.junit.Assert.*;
+import java.util.concurrent.TimeUnit;
 
 public class GameTest {
     static ActorSystem system;
     static LoggingAdapter log;
-    static TestActorRef<Game> game;
 
     @BeforeClass
-    public static void setup() {
+    public static void setupClass() {
         system = ActorSystem.create();
         log = Logging.getLogger(system, GameTest.class);
 
+    }
+
+    private static TestActorRef<Game> createGame() {
         Props props = Props.create(Game.class);
-        game = TestActorRef.create(system, props, "game");
+        return TestActorRef.create(system, props);
     }
 
     @AfterClass
-    public static void teardown() {
+    public static void teardownClass() {
         JavaTestKit.shutdownActorSystem(system);
         system = null;
     }
 
     @Test
     public void gutterGameTest() throws Exception {
-        sendScoreToGame(new ScoreGame(new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 0);
+        sendScoreToGame(createGame(), new ScoreGame(new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 0);
     }
 
     @Test
     public void singlePinTest() throws Exception {
-        sendScoreToGame(new ScoreGame(new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}), 20);
+        sendScoreToGame(createGame(), new ScoreGame(new int[] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}), 20);
     }
 
     @Test
     public void spareTest() throws Exception {
-        sendScoreToGame(new ScoreGame(new int[] {4,6,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 26);
+        sendScoreToGame(createGame(), new ScoreGame(new int[] {4,6,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 26);
     }
 
-    private void sendScoreToGame(ScoreGame attempts, int expectedScore) throws Exception {
+    private void sendScoreToGame(TestActorRef<Game> game, ScoreGame scoreThisGame, int expectedScore) throws Exception {
         new JavaTestKit(system) {{
-            GameScored expected = new GameScored(expectedScore);
-
-            Future<Object> future = Patterns.ask(game, attempts, 3000);
-            assertTrue(future.isCompleted());
-
-            Object actual = Await.result(future, Duration.Zero());
-
-            assertEquals(expected, actual);
+            ScoredGame expected = new ScoredGame(expectedScore);
+            game.tell(scoreThisGame, getRef());
+            expectMsgEquals(FiniteDuration.apply(500, TimeUnit.MILLISECONDS), expected);
         }};
     }
 }

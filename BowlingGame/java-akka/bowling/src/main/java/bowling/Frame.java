@@ -1,18 +1,49 @@
 package bowling;
 
-import scala.Array;
+import akka.actor.AbstractLoggingActor;
+import akka.actor.Props;
+import akka.japi.Creator;
+import akka.japi.pf.ReceiveBuilder;
+import scala.PartialFunction;
+import scala.runtime.BoxedUnit;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Frame {
+public class Frame extends AbstractLoggingActor {
     private int[] attempts;
     private int number;
-    private int[] frame;
 
     public Frame(int[] attempts, int number) {
         this.attempts = attempts;
         this.number = number;
+    }
+
+    public static Props props(int[] attempts, int number) {
+        return Props.create(new Creator<Frame>() {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public Frame create() throws Exception {
+                return new Frame(attempts, number);
+            }
+        });
+    }
+
+    @Override
+    public PartialFunction<Object, BoxedUnit> receive() {
+        return ReceiveBuilder
+                .match(GetFrame.class, o -> {
+                    int[] frame = getFrame();
+                    log().debug("Items in frame {} are: {}", number, frame);
+                    sender().tell(new GotFrame(number, frame), self());
+                })
+                .match(ScoreFrame.class, o -> {
+                    int frameScore = getScore();
+                    log().debug("Score for frame {} is: {}", number, frameScore);
+                    sender().tell(new ScoredFrame(number, frameScore), self());
+                })
+                .matchAny(this::unhandled)
+                .build();
     }
 
     public int[] getFrame() {
@@ -30,6 +61,7 @@ public class Frame {
             }
             frame++;
         }
+        // throw here?
         return new int[0];
     }
 
@@ -50,5 +82,12 @@ public class Frame {
         System.arraycopy(a, 0, c, 0, aLen);
         System.arraycopy(b, 0, c, aLen, bLen);
         return c;
+    }
+
+    @Override
+    public String toString() {
+        return "Frame{" +
+                "number=" + number +
+                '}';
     }
 }

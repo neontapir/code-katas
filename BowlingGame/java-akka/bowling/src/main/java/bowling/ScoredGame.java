@@ -1,9 +1,9 @@
 package bowling;
 
-public class GameScored {
+public class ScoredGame {
     public int result;
 
-    public GameScored(int result) {
+    public ScoredGame(int result) {
         this.result = result;
     }
 
@@ -12,7 +12,7 @@ public class GameScored {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GameScored that = (GameScored) o;
+        ScoredGame that = (ScoredGame) o;
 
         return result == that.result;
 
@@ -25,6 +25,6 @@ public class GameScored {
 
     @Override
     public String toString() {
-        return "GameScored("+result+")";
+        return "ScoredGame("+result+")";
     }
 }
