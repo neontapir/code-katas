@@ -55,6 +55,11 @@ public class GameTest {
         sendScoreToGame(createGame(), new ScoreGame(new int[] {10,6,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}), 28);
     }
 
+    @Test
+    public void perfectGameTest() throws Exception {
+        sendScoreToGame(createGame(), new ScoreGame(new int[] {10,10,10,10,10,10,10,10,10,10,10,10}), 300);
+    }
+
     private void sendScoreToGame(TestActorRef<Game> game, ScoreGame scoreThisGame, int expectedScore) throws Exception {
         new JavaTestKit(system) {{
             ScoredGame expected = new ScoredGame(expectedScore);
