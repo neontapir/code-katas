@@ -7,7 +7,7 @@ You'll find:
 
 <dl>
 <dt>Bowling Game
-<dd>The classic kata from Uncle Bob Martin
+<dd>The classic kata from Uncle Bob Martin, in several languages and approaches
 <dt>Decorator Dojo
 <dd>A coding exercise I've used to teach the Decorator pattern
 <dt>Prime Factors
