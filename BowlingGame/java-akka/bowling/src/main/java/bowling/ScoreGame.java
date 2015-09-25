@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class ScoreGame {
     public int[] attempts;
 
+    public ScoreGame(int[] attempts) {
+        this.attempts = attempts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -13,15 +17,10 @@ public class ScoreGame {
         ScoreGame scoreGame = (ScoreGame) o;
 
         return Arrays.equals(attempts, scoreGame.attempts);
-
     }
 
     @Override
     public int hashCode() {
         return Arrays.hashCode(attempts);
-    }
-
-    public ScoreGame(int[] attempts) {
-        this.attempts = attempts;
     }
 }

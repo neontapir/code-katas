@@ -6,6 +6,11 @@ public class GotFrame {
     public int frameNumber;
     public int[] frame;
 
+    public GotFrame(int frameNumber, int[] frame) {
+        this.frameNumber = frameNumber;
+        this.frame = frame;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -24,10 +29,4 @@ public class GotFrame {
         result = 31 * result + (frame != null ? Arrays.hashCode(frame) : 0);
         return result;
     }
-
-    public GotFrame(int frameNumber, int[] frame) {
-        this.frameNumber = frameNumber;
-        this.frame = frame;
-    }
-
 }

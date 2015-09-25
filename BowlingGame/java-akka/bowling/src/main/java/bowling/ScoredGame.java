@@ -25,6 +25,8 @@ public class ScoredGame {
 
     @Override
     public String toString() {
-        return "ScoredGame("+result+")";
+        return "ScoredGame{" +
+                "result=" + result +
+                '}';
     }
 }

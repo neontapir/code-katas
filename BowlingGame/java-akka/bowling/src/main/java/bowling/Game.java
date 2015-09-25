@@ -10,11 +10,10 @@ import scala.runtime.BoxedUnit;
 
 import java.util.Arrays;
 import java.util.Hashtable;
-import java.util.UUID;
 
 public class Game extends AbstractLoggingActor {
-    public Hashtable<Integer, Integer> frameScores;
     ActorRef querent;
+    public Hashtable<Integer, Integer> frameScores;
 
     public Game() {
         log().info("Game started");
