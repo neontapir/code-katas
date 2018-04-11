@@ -8,7 +8,7 @@ describe GildedRose do
 
     context 'as the concert approaches' do
       before :each do
-        @items = [Item.new(@name, 20, 30)]
+        @items = [BackstagePassItem.new(@name, 20, 30)]
         GildedRose.new(@items).update_quality
       end
 
@@ -23,7 +23,7 @@ describe GildedRose do
 
     context 'as the concert is less than 10 days away' do
       before :each do
-        @items = [Item.new(@name, 9, 10)]
+        @items = [BackstagePassItem.new(@name, 9, 10)]
         GildedRose.new(@items).update_quality
       end
 
@@ -38,7 +38,7 @@ describe GildedRose do
 
     context 'as the concert is less than 5 days away' do
       before :each do
-        @items = [Item.new(@name, 4, 10)]
+        @items = [BackstagePassItem.new(@name, 4, 10)]
         GildedRose.new(@items).update_quality
       end
 
@@ -53,7 +53,7 @@ describe GildedRose do
 
     context 'after concert is over' do
       before :each do
-        @items = [Item.new(@name, -1, 30)]
+        @items = [BackstagePassItem.new(@name, -1, 30)]
         GildedRose.new(@items).update_quality
       end
 

@@ -29,6 +29,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl = Guard::RSpec::Dsl.new(self)
 
   # Feel free to open issues for suggestions and improvements
+  watch(/(.*)/) { |m| puts "Change detected for file: #{m[1]}"; nil }
 
   # RSpec files
   rspec = dsl.rspec
