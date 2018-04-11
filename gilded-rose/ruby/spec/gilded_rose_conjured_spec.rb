@@ -8,7 +8,7 @@ describe GildedRose do
 
     context 'that is fresh' do
       before :each do
-        @items = [ConjuredItem.new(@name, 1, 50)]
+        @items = [Item.new(@name, 1, 50)]
         GildedRose.new(@items).update_quality
       end
 
@@ -23,7 +23,7 @@ describe GildedRose do
 
     context 'that is stale' do
       before :each do
-        @items = [ConjuredItem.new(@name, 0, 50)]
+        @items = [Item.new(@name, 0, 50)]
         GildedRose.new(@items).update_quality
       end
 
