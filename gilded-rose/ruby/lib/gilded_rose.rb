@@ -1,14 +1,19 @@
+require 'forwardable'
 require_relative 'item'
 
 class GildedRose
   class ItemWrapper
+    extend Forwardable
+
     def initialize(item)
       @item = item
     end
 
     def age
-      @item.sell_in -= 1
+      self.sell_in -= 1
     end
+
+    delegate %i[quality quality= sell_in sell_in=] => :@item
   end
 
   class AgedBrie < ItemWrapper
@@ -19,23 +24,23 @@ class GildedRose
 
   class BackstagePass < ItemWrapper
     def update
-      @item.quality =
-        if @item.sell_in.negative?
+      self.quality =
+        if sell_in.negative?
           0
         else
-          extra = case @item.sell_in
+          extra = case sell_in
                   when 6..10 then 2
                   when 0..5 then 3
                   else 1
                   end
-          @item.quality + extra
+          quality + extra
         end
     end
   end
 
   class Conjured < ItemWrapper
     def update
-      @item.quality = [0, @item.quality - 2].max
+      self.quality = [0, quality - 2].max
     end
   end
 
@@ -43,13 +48,13 @@ class GildedRose
     def age; end
 
     def update
-      @item.quality = 80
+      self.quality = 80
     end
   end
 
   class Normal < ItemWrapper
     def update
-      @item.quality = [0, @item.quality - 1].max
+      self.quality = [0, quality - 1].max
     end
   end
 
