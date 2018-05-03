@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{B04F5158-3084-4150-8346-36FA049B9F48}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/GildedRoseCore.Console.Tests/TestAssemblyTests.cs">
+    <Files>
+      <File FileName="src/GildedRoseCore.Console/Program.cs" Line="45" Column="53" />
+      <File FileName="src/GildedRoseCore.Console.Tests/TestAssemblyTests.cs" Line="14" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.src.GildedRoseCore.Console PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
