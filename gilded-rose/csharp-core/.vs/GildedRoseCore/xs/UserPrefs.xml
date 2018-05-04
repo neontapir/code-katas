@@ -1,9 +1,18 @@
 ﻿<Properties StartupConfiguration="{B04F5158-3084-4150-8346-36FA049B9F48}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/GildedRoseCore.Console.Tests/TestAssemblyTests.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/GildedRoseCore.Console/Program.cs">
     <Files>
-      <File FileName="src/GildedRoseCore.Console/Program.cs" Line="45" Column="53" />
+      <File FileName="src/GildedRoseCore.Console/Program.cs" Line="1" Column="1" />
       <File FileName="src/GildedRoseCore.Console.Tests/TestAssemblyTests.cs" Line="14" Column="2" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="GildedRoseCore" expanded="True" selected="True">
+            <Node name="src" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
