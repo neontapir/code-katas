@@ -61,6 +61,15 @@ namespace Big_Number
 
         public override string ToString() => new String(value.ToArray());
 
+		public static bool operator ==(Big_Number one, Big_Number another) {
+			return one.Equals(another);
+		}
+
+		public static bool operator !=(Big_Number one, Big_Number another)
+        {
+			return !(one.Equals(another));
+        }
+        
         public override bool Equals(object obj)
         {
             return (obj is Big_Number) && (ToString() == obj.ToString());
