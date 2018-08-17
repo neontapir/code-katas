@@ -1,0 +1,10 @@
+.classpath
+.project
+.idea/workspace.xml
+.idea/dictionaries
+bin
+out
+build
+.gradle
+.settings
+.idea
