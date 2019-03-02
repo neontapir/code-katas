@@ -12,8 +12,9 @@ and the build the habit of committing early and often.
 . Install `guard` and `guard-test`
 . Install `bundle`
 . Install `watch` (Mac) or equivalent that will run a command every so often
+    $ brew install watch
 . Set up the constraint. Open a new Terminal in the folder:
-    watch -n120 -d git reset --hard
+    $ watch -n120 -d git reset --hard
 . For your first commit of the exercise, run the following commands on the command line:
     $ bundle init
     $ bundle add guard guard-minitest
