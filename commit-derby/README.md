@@ -15,8 +15,8 @@ and the build the habit of committing early and often.
     watch -n120 -d git reset --hard
 . For your first commit of the exercise, run the following commands on the command line:
     bundle init
-    bundle add guard guard-test
-    bundle exec guard init test
+    bundle add guard guard-minitest
+    bundle exec guard init minitest
     git add Gemfile* Guardfile
     git commit -m 'exercise start, set up bundle and guard'
 . Wait until the watch command runs, -d should highlight the commit number and message
