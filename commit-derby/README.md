@@ -14,11 +14,31 @@ and the build the habit of committing early and often.
 . Set up the constraint. Open a new Terminal in the folder:
     watch -n120 -d git reset --hard
 . For your first commit of the exercise, run the following commands on the command line:
-    bundle init
-    bundle add guard guard-minitest
-    bundle exec guard init minitest
-    git add Gemfile* Guardfile
-    git commit -m 'exercise start, set up bundle and guard'
+    $ bundle init
+    $ bundle add guard guard-minitest
+    $ bundle exec guard init minitest
+    # edit Guardfile: comment out Minitest::Unit section and uncomment Minitest::Spec section
+    $ git add Gemfile* Guardfile
+    $ echo "class Game
+      def score
+        0
+      end
+    end
+    " >> game.rb
+    $ mkdir spec
+    $ echo "require 'minitest/spec'
+    require 'minitest/autorun'
+    require_relative '../Game'
+
+    describe Game do
+      it 'can score an empty game' do
+        Game.new.score.must_equal 0
+      end
+    end
+    " >> spec/game_spec.rb
+    $ git commit -m 'exercise start, set up bundle, guard, and Game class'
+. Validate Guard is working correctly
+.. Edit the first test by changing the 0 to a 1. Guard should detect the change and the test should fail.
 . Wait until the watch command runs, -d should highlight the commit number and message
 . Load your editor and start working
     code .
