@@ -1,7 +1,8 @@
 # commit-derby
 
-In this kata, you run a script to undo git changes every so often. The instructions assume every 120 seconds.
-The purpose of this kata is to teach you how to think ahead about the work you are doing while doing the work.
+In this kata, you run a script to undo git changes very frequently. The instructions assume every 120 seconds.
+The purpose of this kata is to teach you how to think ahead about the work you are doing while doing the work,
+and the build the habit of committing early and often.
 
 ## The rules
 
