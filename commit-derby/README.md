@@ -11,13 +11,13 @@ The purpose of this kata is to teach you how to think ahead about the work you a
 . Install `bundle`
 . Install `watch` (Mac) or equivalent that will run a command every so often
 . Set up the constraint. Open a new Terminal in the folder:
-    watch -n120 git reset --hard
+    watch -n120 -d git reset --hard
 . For your first commit of the exercise, run the following commands on the command line:
     bundle init
     bundle add guard guard-test
     bundle exec guard init test
     git add Gemfile* Guardfile
     git commit -m 'exercise start, set up bundle and guard'
-. Wait until the watch command runs, you should see the display change
+. Wait until the watch command runs, -d should highlight the commit number and message
 . Load your editor and start working
     code .
