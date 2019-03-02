@@ -17,6 +17,7 @@ The purpose of this kata is to teach you how to think ahead about the work you a
     bundle add guard guard-test
     bundle exec guard init test
     git add Gemfile* Guardfile
-    git commit -m 'first commit, set up bundle and guard'
+    git commit -m 'exercise start, set up bundle and guard'
+. Wait until the watch command runs, you should see the display change
 . Load your editor and start working
     code .
