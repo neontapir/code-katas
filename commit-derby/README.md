@@ -10,7 +10,7 @@ The learning outcome of this kata is to teach you how to think ahead about the w
   a. For your first time, pick a kata you know well
   b. In this example, I am setting up the Bowling Game kata
 2. Install `bundle`
-3. Install `watch` (Mac) or equivalent that will run a command every so often
+3. Install `watch` (Mac) or equivalent that will run a command every so often. See next section for Windows.
 ````
     $ brew install watch
 ````
@@ -55,4 +55,15 @@ The learning outcome of this kata is to teach you how to think ahead about the w
 9. Load your editor and start working. For me, that's Visual Studio Code.
 ````
     $ code .
+````
+
+### Windows
+
+Use Task Scheduler or try a batch file like this:
+````
+:loop
+git reset --hard
+timeout /t 120 /nobreak
+goto :loop
+````
 ````
