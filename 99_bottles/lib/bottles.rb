@@ -1,12 +1,12 @@
 class Bottles
-  def bottle_handle(number)
+  def container_handle(number)
     case number
     when 1 then "it"
     else "one"
     end
   end
 
-  def bottles(number)
+  def container(number)
     case number
     when 0 then "no more bottles"
     when 1 then "1 bottle"
@@ -15,8 +15,8 @@ class Bottles
   end
 
   def bottles_of_beer_line(number)
-    "#{bottles(number).capitalize} of beer on the wall, " +
-    "#{bottles(number)} of beer.\n"
+    "#{container(number).capitalize} of beer on the wall, " +
+    "#{container(number)} of beer.\n"
   end
 
   def handout_line(number)
@@ -25,8 +25,8 @@ class Bottles
       "Go to the store and buy some more, " + 
       "99 bottles of beer on the wall.\n"
     else
-      "Take #{bottle_handle(number)} down and pass it around, " +
-      "#{bottles(number-1)} of beer on the wall.\n"
+      "Take #{container_handle(number)} down and pass it around, " +
+      "#{container(number-1)} of beer on the wall.\n"
     end
   end
 
