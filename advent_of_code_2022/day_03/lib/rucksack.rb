@@ -16,7 +16,7 @@ class Rucksack
   end
 
   def self.priority(item)
-    char = item.first
+    char = item[0]
     result = (char.downcase.ord - 'a'.ord) + 1
     result += 26 if ('A'..'Z').include? char
     result
