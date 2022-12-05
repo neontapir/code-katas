@@ -1,13 +1,5 @@
 require 'rspec'
-
-class Calories
-  def elves(file)
-    elves = File.open(file).each_line.map(&:chomp)
-    elves
-      .slice_when{|i,j| j == ''}
-      .map{|i| i.map(&:to_i).sum}
-  end
-end
+require_relative 'lib/calories'
 
 class CaloriesSpec
   # NOTE: the "expected" values were all obtained by running the test with a bogus value and harvesting the actual result

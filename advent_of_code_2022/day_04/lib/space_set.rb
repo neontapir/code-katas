@@ -1,7 +1,6 @@
 require_relative 'space'
 
 class SpaceSet
-  attr_accessor :assignmentPairs
   include Enumerable
 
   def initialize(*assignmentPairs)
@@ -20,4 +19,8 @@ class SpaceSet
   def partial_overlaps
     assignmentPairs.filter{|p| p.partial_overlap?}
   end
+
+  protected
+
+  attr_accessor :assignmentPairs
 end

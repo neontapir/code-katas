@@ -1,7 +1,6 @@
 require_relative('rucksack')
 
 class RucksackSet
-  attr_accessor :rucksacks
   include Enumerable
 
   def initialize(*rucksacks)
@@ -37,4 +36,8 @@ class RucksackSet
   def ==(other)
     map{|r| r.contents} == other.map{|r| r.contents}
   end
+
+  protected
+  
+  attr_accessor :rucksacks
 end

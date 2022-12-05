@@ -1,6 +1,6 @@
 class Space
   attr_reader :assignments, :ranges
-
+  
   def initialize(assignments)
     @assignments = assignments
     @ranges = to_ranges
