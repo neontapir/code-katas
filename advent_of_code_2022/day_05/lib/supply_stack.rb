@@ -1,8 +1,8 @@
-require_relative 'cranemaster_9000'
+require_relative 'cranemover_9000'
 class SupplyStack
   attr_reader :instructions, :state, :crane
 
-  def initialize(instruction_file, crane = Cranemaster9000.new)
+  def initialize(instruction_file, crane = CraneMover9000.new)
     lines = File.readlines(instruction_file)
     divider = lines.find_index{ |l| l == "\n" }
     diagram = lines[0..divider-1]

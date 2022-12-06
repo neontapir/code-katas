@@ -1,6 +1,6 @@
 require 'rspec'
 require_relative 'lib/supply_stack'
-require_relative 'lib/cranemaster_9001'
+require_relative 'lib/cranemover_9001'
 
 class SupplyStackSpec
   describe SupplyStack do
@@ -42,7 +42,7 @@ class SupplyStackSpec
 
     context 'part 2 input set' do
       it 'can find the top crate in each stack' do
-        stack = SupplyStack.new('day_05/day_05_input.txt', Cranemaster9001.new)
+        stack = SupplyStack.new('day_05/day_05_input.txt', CraneMover9001.new)
         stack.rearrange
         expect(stack.top_crates).to eq "RMHFJNVFP"
       end

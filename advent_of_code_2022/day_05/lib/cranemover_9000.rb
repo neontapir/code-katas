@@ -1,4 +1,4 @@
-class Cranemaster9000
+class CraneMover9000
   def apply(state, move_values)
     qty, src, dest = move_values
     
