@@ -1,15 +1,15 @@
 require 'rspec'
-require_relative 'lib/treehouse'
+require_relative 'lib/treehouse_forest'
 
 class TreehouseSpec
-  describe Forest do
+  describe TreehouseForest do
     
     context 'sample file' do
-      subject(:forest) { Forest.new('day_08/day_08_sample.txt')}
+      subject(:forest) { TreehouseForest.new('day_08/day_08_sample.txt')}
 
       it 'builds grid' do
         expect(forest.grid).to eq [
-          [3, 0, 3, 7, 3], 
+          [3, 0, 3, 7, 3],
           [2, 5, 5, 1, 2], 
           [6, 5, 3, 3, 2], 
           [3, 3, 5, 4, 9], 
@@ -54,7 +54,7 @@ class TreehouseSpec
     end
 
     context 'input file' do
-      subject(:forest) { Forest.new('day_08/day_08_input.txt')}
+      subject(:forest) { TreehouseForest.new('day_08/day_08_input.txt')}
 
       it 'calculates sum of visible trees' do
         expect(forest.sum_visible).to eq 1736
