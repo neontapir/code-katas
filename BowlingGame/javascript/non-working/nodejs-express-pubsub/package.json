@@ -1,5 +1,5 @@
 {
-  "name": "bowlingGame",
+  "name": "bowling-game",
   "version": "1.0.0",
   "description": "a game of bowling",
   "main": "game.js",
