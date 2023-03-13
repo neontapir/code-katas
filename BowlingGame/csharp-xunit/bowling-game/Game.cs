@@ -5,75 +5,44 @@ namespace BowlingGame
 {
     public class Game
     {
-        private List<int> rolls;
-        
-        public Game()
-        {
-            rolls = new List<int>();
-        }
-
-        //public int Score()
-        //{
-        //    var result = 0;
-        //    var tally = rolls.Concat(new List<int>{0, 0}).ToList();
-        //    var i = 0;
-        //    while(i < rolls.Count) {
-        //        result += tally[i] + tally[i + 1];
-
-        //        var advanceBy = 2;
-        //        if (tally[i] == 10)
-        //        {
-        //            result += tally[i + 2];
-        //            advanceBy = 1;
-        //        }
-        //        else if (tally[i] + tally[i + 1] == 10)
-        //        {
-        //            result += tally[i + 2];
-        //        }
-
-        //        i += advanceBy;
-        //    }
-        //    return result;
-        //}
-
-        //public void Roll(int value)
-        //{
-        //    rolls.Add(value);
-        //}
+        private readonly List<int> rolls = new List<int>();
 
         public int Score()
         {
             int total = 0;
-            int nextItem = 0;
+            int rollIndex = 0;
+
             for (int frame = 0; frame < 10; frame++)
             {
-                total += Get(nextItem);
-                bool isStrike = Get(nextItem) == 10;
-                if (isStrike)
+                int firstRoll = rolls.ElementAtOrDefault(rollIndex);
+                int secondRoll = rolls.ElementAtOrDefault(rollIndex + 1);
+                int bonusRoll = rolls.ElementAtOrDefault(rollIndex + 2);
+
+                int frameScore = firstRoll + secondRoll;
+                if (rolls.ElementAtOrDefault(rollIndex) == 10) // strike
                 {
-                    total += Get(nextItem + 1) + Get(nextItem + 2);
-                    nextItem += 1;
+                    frameScore += secondRoll + bonusRoll;
+                    rollIndex += 1;
+                }
+                else if (frameScore == 10) // spare
+                {
+                    frameScore += bonusRoll;
+                    rollIndex += 2;
                 }
                 else
                 {
-                    total += Get(nextItem + 1);
-                    bool isSpare = Get(nextItem) + Get(nextItem + 1) == 10;
-                    if (isSpare)
-                    {
-                        total += Get(nextItem + 2);
-                    }
-                    nextItem += 2;
+                    rollIndex += 2;
                 }
+
+                total += frameScore;
             }
+
             return total;
         }
 
-        public void Roll(int roll) => rolls.Add(roll);
-
-        private int Get(int i)
+        public void Roll(int pins)
         {
-            // with Linq, could do results.ElementAtOrDefault(i);
-            return (i < rolls.Count) ? rolls[i] : 0;
+            rolls.Add(pins);
         }
     }
 }

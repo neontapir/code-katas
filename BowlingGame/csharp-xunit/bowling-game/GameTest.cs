@@ -9,12 +9,10 @@ namespace BowlingGame
     public class BowlingGameTest
     {
         Game game;
-        private readonly ITestOutputHelper output;
 
-        public BowlingGameTest(ITestOutputHelper output)
+        public BowlingGameTest()
         {
             game = new Game();
-            this.output = output;
         }
 
         [Fact]
