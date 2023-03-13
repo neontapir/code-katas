@@ -1,0 +1,17 @@
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/csharp-xunit.deps.json
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/csharp-xunit.runtimeconfig.json
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/csharp-xunit.runtimeconfig.dev.json
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/csharp-xunit.dll
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/csharp-xunit.pdb
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.csproj.CoreCompileInputs.cache
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.AssemblyInfoInputs.cache
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.AssemblyInfo.cs
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.dll
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.pdb
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.csproj.AssemblyReference.cache
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.GeneratedMSBuildEditorConfig.editorconfig
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/obj/Debug/netcoreapp2.0/csharp-xunit.genruntimeconfig.cache
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/xunit.runner.visualstudio.testadapter.dll
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/xunit.runner.reporters.net452.dll
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/xunit.runner.utility.net452.dll
+/Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/bin/Debug/netcoreapp2.0/xunit.abstractions.dll

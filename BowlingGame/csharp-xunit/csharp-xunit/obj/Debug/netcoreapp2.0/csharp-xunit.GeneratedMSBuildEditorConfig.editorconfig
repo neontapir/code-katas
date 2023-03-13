@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = csharp-xunit
+build_property.ProjectDir = /Users/neontapir/git/github/neontapir/code-katas/BowlingGame/csharp-xunit/csharp-xunit/
