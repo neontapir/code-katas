@@ -3,9 +3,9 @@
   "description": "Bowling game kata",
   "author": "Chuck Durfee <neontapir@gmail.com>",
   "dependencies": {
-    "express": "3.16.2",
+    "express": "4.18.2",
     "should": "4.0.4",
-    "supertest": "0.13.0"
+    "supertest": "6.3.3"
   },
   "engine": "node >=0.10"
 }
