@@ -24,18 +24,18 @@ class Diamond:
     #   generated line in letters, hence masking_sequence.
 
     def _create(self) -> list[str]:
-        def mirrored_seq(list: list[str]) -> list[str]:
-            """from 'CBA' to 'CBABC'"""
-            return list + list[0:-1][::-1]
+        def mirrored_seq(seq: str) -> str:
+            """from 'C' to 'CBABC'"""
+            return seq + seq[-2::-1]
 
-        # with self.spec = 'C', template is 'CBA'
-        template: list[str] = [chr(i) for i in range(ord(self.spec), ord("A") - 1, -1)]
-        diamond_template: list[str] = mirrored_seq(template)
+        # Create template as a string 'CBA'
+        template: str = "".join(chr(i) for i in range(ord(self.spec), ord("A") - 1, -1))
+        diamond_template: str = mirrored_seq(template)
 
-        unmasked_letters = list(reversed(template))
-        masking_sequence: list[str] = mirrored_seq(unmasked_letters)
+        unmasked_letters: str = template[::-1]
+        masking_sequence: str = mirrored_seq(unmasked_letters)
 
-        def make_line(letter):
+        def make_line(letter: str) -> str:
             return "".join(" " if c != letter else c for c in diamond_template)
 
         return [make_line(x) for x in masking_sequence]
