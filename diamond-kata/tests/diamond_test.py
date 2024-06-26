@@ -15,12 +15,12 @@ from src.diamond import Diamond
 
 
 def test_non_letter():
-    with raises(ValueError) as e_info:
+    with raises(ValueError, match=".*single uppercase letter.*") as e_info:
         d = Diamond("3")
 
 
 def test_lowercase():
-    with raises(ValueError) as e_info:
+    with raises(ValueError, match=".*single uppercase letter.*") as e_info:
         d = Diamond("y")
 
 
