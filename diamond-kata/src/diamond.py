@@ -33,7 +33,7 @@ class Diamond:
         diamond_template: list[str] = mirrored_seq(template)
 
         unmasked_letters = list(reversed(template))
-        masking_sequence = mirrored_seq(unmasked_letters)
+        masking_sequence: list[str] = mirrored_seq(unmasked_letters)
 
         def make_line(letter):
             return "".join(" " if c != letter else c for c in diamond_template)
