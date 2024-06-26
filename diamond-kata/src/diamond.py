@@ -19,16 +19,16 @@ class Diamond:
     #   C   C
     #    B B
     #     A
-    # The first step is accomplished by letters; the second, by make_line.
+    # The steps are accomplished by diamond_template and make_line.
     # However, we have to erase the letters in the opposite order as the
-    #   generated line in letters, hence masking_sequence.
+    #   generated line in diamond_template, hence masking_sequence.
 
     def _create(self) -> list[str]:
         def mirrored_seq(seq: str) -> str:
-            """from 'C' to 'CBABC'"""
+            """from 'CBA' to 'CBABC'"""
             return seq + seq[-2::-1]
 
-        # Create template as a string 'CBA'
+        # from 'C' to 'CBA'
         template: str = "".join(chr(i) for i in range(ord(self.spec), ord("A") - 1, -1))
         diamond_template: str = mirrored_seq(template)
 
