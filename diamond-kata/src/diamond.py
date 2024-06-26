@@ -1,5 +1,5 @@
 class Diamond:
-    def __init__(self, spec):
+    def __init__(self, spec) -> None:
         if len(spec) != 1 or not spec.isupper():
             raise ValueError("spec must be a single uppercase letter")
         self.spec: str = spec
@@ -13,7 +13,7 @@ class Diamond:
     #   CBABC
     #   CBABC
     #   CBABC
-    # Then, if I mask all but A,B,C,B,A with spaces, I get:
+    # Then, if I mask all but A,B,C,B,A in each line with spaces, I get:
     #     A
     #    B B
     #   C   C
@@ -40,5 +40,5 @@ class Diamond:
 
         return [make_line(x) for x in masking_sequence]
 
-    def print(self):
+    def print(self) -> None:
         print("\n".join(self.diamond_array))
