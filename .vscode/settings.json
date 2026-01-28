@@ -1,0 +1,6 @@
+{
+  "dotnet.defaultSolution": "disable",
+  "cSpell.words": [
+    "cherrypy"
+  ]
+}
